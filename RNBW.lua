@@ -493,7 +493,7 @@ bMesh2.Offset = Vector3.new(0, 0, 0)
 local bWeld2 = Instance.new("Weld", bl2)
 bWeld2.Part0 = me:FindFirstChild("Right Arm")
 bWeld2.Part1 = bl2
-bWeld2.C0 = CFrame.new(0, -2, 8) * CFrame.Angles(math.rad(-20), 0, 0)
+bWeld2.C0 = CFrame.new(0, -1, 8) * CFrame.Angles(math.rad(-20), 0, 0)
 * CFrame.Angles(0, 0, 0)
 * CFrame.Angles(0, 0, 0)
 
