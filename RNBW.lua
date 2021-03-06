@@ -1,5 +1,3 @@
--- 2739934221
-
 it = Instance.new
 local me = game.Workspace.himoresore
 local m = it("Sound")
@@ -496,6 +494,19 @@ bWeld2.Part1 = bl2
 bWeld2.C0 = CFrame.new(0, -1, 8) * CFrame.Angles(math.rad(-20), 0, 0)
 * CFrame.Angles(0, 0, 0)
 * CFrame.Angles(0, 0, 0)
+
+local function onPartTouched(otherPart)
+	-- Get the other part's parent
+	local partParent = otherPart.Parent
+	-- Look for a humanoid in the parent
+	local humanoid = partParent:FindFirstChildWhichIsA("Humanoid")
+	if humanoid then
+		-- Do something to the humanoid, like set its health to 0
+		humanoid.Health = 0
+	end
+end
+ 
+bl2.Touched:Connect(onPartTouched)
 
 wait(1.5)
 bl2:Destroy()
