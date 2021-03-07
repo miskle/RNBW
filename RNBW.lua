@@ -17,6 +17,7 @@ cf = CFrame.new
 cfa = CFrame.Angles
 necc = tor.Neck
 ro = math.rad
+vt = Vector3.new
 
 local ra = tor:FindFirstChild("Right Shoulder")
 local la = tor:FindFirstChild("Left Shoulder")
@@ -475,8 +476,9 @@ vt = Vector3.new
 
 btn.MouseButton1Down:connect(function()
 local bl2 = Instance.new("Part", me)
+bl2.CanCollide = false
 bl2.Material = Enum.Material.Neon
-bl2.Size = Vector3.new(0.5, 0.5, 15)
+bl2.Size = Vector3.new(0.5, 0.5, 20)
 bl2.Anchored = false
 bl2.CFrame = CFrame.new(0, 10, 0)
 bl2.Color = Color3.new(1,0,0)
@@ -485,31 +487,77 @@ bl2.Position = bl.Position
 
 local bMesh2 = Instance.new("SpecialMesh", bl2)
 bMesh2.MeshType = "Brick"
--- bMesh2.Scale = Vector3.new(1, 1, 5)
-bMesh2.Offset = Vector3.new(0, 0, 0)
+bMesh2.Scale = Vector3.new(1, 1, 1)
+-- bMesh2.Offset = Vector3.new(0, 1.5, 3)
 
 local bWeld2 = Instance.new("Weld", bl2)
 bWeld2.Part0 = me:FindFirstChild("Right Arm")
 bWeld2.Part1 = bl2
-bWeld2.C0 = CFrame.new(0, -1, 8) * CFrame.Angles(math.rad(-20), 0, 0)
+bWeld2.C0 = CFrame.new(0, 0, 10) * CFrame.Angles(math.rad(-20), 0, 0)
 * CFrame.Angles(0, 0, 0)
 * CFrame.Angles(0, 0, 0)
 
 local function onPartTouched(otherPart)
-	-- Get the other part's parent
-	local partParent = otherPart.Parent
-	-- Look for a humanoid in the parent
-	local humanoid = partParent:FindFirstChildWhichIsA("Humanoid")
-	if humanoid then
-		-- Do something to the humanoid, like set its health to 0
-		humanoid.Health = 0
-	end
+-- Get the other part's parent
+local partParent = otherPart.Parent
+-- Look for a humanoid in the parent
+local humanoid = partParent:FindFirstChildWhichIsA("Humanoid")
+if humanoid then
+-- Do something to the humanoid, like set its health to 0
+humanoid.Health = 0
 end
- 
+end
+
 bl2.Touched:Connect(onPartTouched)
 
-wait(1.5)
+local blast = it("Part",me)
+blast.Material = Enum.Material.Neon
+blast.Size = Vector3.new(3,3,3)
+blast.Color = Color3.new(1,1,1)
+blast.Transparency = 0
+blast.Anchored = false
+blast.CanCollide = false
+
+local bWeld3 = Instance.new("Weld", blast)
+bWeld3.Part0 = me:FindFirstChild("Right Arm")
+bWeld3.Part1 = blast
+bWeld3.C0 = CFrame.new(0, 4, 20) * CFrame.Angles(math.rad(-20), 0, 0)
+* CFrame.Angles(0, 0, 0)
+* CFrame.Angles(0, 0, 0)
+
+wait(0.1)
+bl2.Transparency = 0.1
+blast.Transparency = 0.1
+wait(0.1)
+bl2.Transparency = 0.2
+blast.Transparency = 0.2
+wait(0.1)
+bl2.Transparency = 0.3
+blast.Transparency = 0.3
+wait(0.1)
+bl2.Transparency = 0.4
+blast.Transparency = 0.4
+wait(0.1)
+bl2.Transparency = 0.5
+blast.Transparency = 0.5
+wait(0.1)
+bl2.Transparency = 0.6
+blast.Transparency = 0.6
+wait(0.1)
+bl2.Transparency = 0.7
+blast.Transparency = 0.7
+wait(0.1)
+bl2.Transparency = 0.8
+blast.Transparency = 0.8
+wait(0.1)
+bl2.Transparency = 0.9
+blast.Transparency = 0.9
+wait(0.1)
+bl2.Transparency = 1
+blast.Transparency = 1
+wait(0.1)
 bl2:Destroy()
+blast:Destroy()
 end)
 
 btn2.MouseButton1Down:connect(function()
@@ -627,3 +675,5 @@ end
 end)
 
 -- coroutine.resume(skid_mode)
+
+me.Health:Destroy()
